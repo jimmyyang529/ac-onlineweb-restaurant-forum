@@ -37,7 +37,3 @@ User Stories:
 
 * Phase 6 :
 * 訪客可以追蹤美食達人 (follow)
-
-
-
-* ...

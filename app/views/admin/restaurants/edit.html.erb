@@ -1,0 +1,4 @@
+<%= form_for @restaurant, :url => { :controller => 'admin/restaurants', :action => 'update', :id => @restaurant } do |f| %>
+    <%= render :partial => 'form', :locals => { :f => f } %>
+    <%= f.submit "Update" %>
+<% end %>

@@ -1,0 +1,8 @@
+<h1><%= @category.name %>列表</h1>
+<% @restaurants.each do |restaurant| %>
+  <%= image_tag(restaurant.image, :width => 250) %>
+  <%= restaurant.name %>
+  <%= link_to 'show', category_restaurant_path(@category, restaurant) %>
+<% end %>
+<br>
+<%= link_to 'back to index', root_path %>

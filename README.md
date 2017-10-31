@@ -2,11 +2,7 @@
 
 ### 先執行 Gem 安裝： bundle install
 
-### 執行 rails db:migrate
-
-### 建立種子資料 rails db:seed
-
-### 執行腳本 rake dev:rebuild
+### 執行腳本 rake dev:rebuild(自動執行db:setup)
 
 ### 登入後台位置 /admin/restaurants ，管理者帳號 root@example.com 密碼 password
 
@@ -37,7 +33,3 @@ User Stories:
 
 * Phase 6 :
 * 訪客可以追蹤美食達人 (follow)
-
-
-
-* ...

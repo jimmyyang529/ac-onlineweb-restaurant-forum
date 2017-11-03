@@ -7,6 +7,9 @@ class Admin::CategoriesController < ApplicationController
     @categories = Category.all
   end
 
+  def show
+  end
+
   def new
     @category = Category.new
   end
@@ -17,6 +20,7 @@ class Admin::CategoriesController < ApplicationController
       redirect_to :action => :index
       flash[:notice] = "category was successfully created"
     else
+      flash[:notice] = "category was failed to created"
       render :action => :new
     end
   end
@@ -29,6 +33,7 @@ class Admin::CategoriesController < ApplicationController
       redirect_to :action => :index
       flash[:notice] = "category was successfully updated"
     else
+      flash[:notice] = "category was failed to updated"
       render :action => :edit
     end
   end
@@ -43,6 +48,4 @@ class Admin::CategoriesController < ApplicationController
   def category_params
     params.require(:category).permit(:name)
   end
-
-
 end

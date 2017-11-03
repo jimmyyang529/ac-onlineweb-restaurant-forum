@@ -4,11 +4,14 @@ class Admin::RestaurantsController < ApplicationController
 	before_action :set_restaurant,  :only => [ :show, :edit, :update, :destroy]
 
 	def index
-    	@restaurants = Restaurant.all
+  	@restaurants = Restaurant.all
  	end
 
+  def show
+  end
+
  	def new
-  		@restaurant = Restaurant.new
+		@restaurant = Restaurant.new
 	end
 
 	def create
@@ -17,6 +20,7 @@ class Admin::RestaurantsController < ApplicationController
       redirect_to :action => :index
 			flash[:notice] = "restaurant was successfully created"
     else
+      flash[:notice] = "restaurant was failed to created"
  			render :action => :new
     end
   end
@@ -29,31 +33,15 @@ class Admin::RestaurantsController < ApplicationController
       redirect_to :action => :show, :id => @restaurant
       flash[:notice] = "restaurant was successfully updated"
    else
+      flash[:notice] = "restaurant was failed to updated"
       render :action => :edit
    end
   end
 
-  def show
-  end
-
-
-
   private
 
   def restaurant_params
-    params.require(:restaurant).permit(:name,
-    																	:opening_hours,
-    																	:tel,
-    																	:address,
-    																	:description,
-    																	:image,
-                                      :category_id
-    																	)
+    params.require(:restaurant).permit(:name, :opening_hours, :tel,	:address,
+                                       :description, :image, :category_id)
   end
-
-
-
-
-
-
 end

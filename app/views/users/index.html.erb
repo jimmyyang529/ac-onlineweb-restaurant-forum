@@ -1,17 +1,19 @@
-  <% @users.each do |user| %><br>
-        <%= image_tag(user.file_location, :width => 250) %>
- 
-        <% if current_user != user %>
-          <% if current_user.following?(user) %>
-            <%= button_to 'Unfollow', friendship_path(id: user.id), method: :delete %>
-            <% else %>
-            <%= button_to 'Follow', friendships_path(id: user.id) %>
-          <% end %>
-        <% end %>
+<% @users.each do |user| %><br>
+  <%= image_tag(user.file_location, :width => 250) %>
 
-       <h1><%= user.firstname %>
-            <%= user.lastname %></h1>
-
-        <%= user.introself %>
-        <%= link_to 'Show', user_path(user) %><hr>
+  <% if current_user != user %>
+    <% if current_user.following?(user) %>
+      <%= button_to 'Unfollow', friendship_path(id: user.id), method: :delete %>
+    <% else %>
+      <%= button_to 'Follow', friendships_path(id: user.id) %>
+    <% end %>
   <% end %>
+
+  <h1>
+  <%= user.firstname %>
+  <%= user.lastname %>
+  </h1>
+
+  <%= user.introself %>
+  <%= link_to 'Show', user_path(user) %><hr>
+<% end %>

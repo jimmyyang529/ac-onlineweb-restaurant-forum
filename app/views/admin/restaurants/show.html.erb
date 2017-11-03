@@ -1,13 +1,11 @@
-<h1>
-<%= @restaurant.name %> Restaurant 
-</h1>
+<h1><%= @restaurant.name %> Restaurant</h1>
+
 <%= image_tag(@restaurant.image) %> </br>
 
-Opening Hours:<%= @restaurant.opening_hours %> <br>
+Opening Hours:<%= @restaurant.opening_hours %><br>
 Tel: <%= @restaurant.tel %><br>
 Address: <%= @restaurant.address %><br>
- 
 Description:<%= @restaurant.description %><br>
  
- <%= link_to 'Back to index', :controller => 'admin/restaurants', :action => 'index' %><br>
+<%= link_to 'Back to index', :controller => 'admin/restaurants', :action => 'index' %><br>
 

@@ -1,4 +1,1 @@
-<%= form_for @category, :url => { :controller => 'admin/categories', :action => 'update' } do |f| %>
-  <%= render :partial => 'form', :locals => { :f => f } %>
-  <%= f.submit "Update" %>
-<% end %>
+<%= render "form", :category => @category, :url => admin_category_path(@category) %>

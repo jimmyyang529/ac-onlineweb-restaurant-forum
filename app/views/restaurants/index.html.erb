@@ -1,25 +1,25 @@
-  <h1>美食論壇</h1>
-  <ul>
-    <%= link_to 'TOP10 Restaurants ', ranking_restaurants_path %> 
-  </ul>
-  <ul>
-    <%= link_to '達人專頁 ', users_path %>
-  </ul>
+<h1>美食論壇</h1>
+<ul>
+  <%= link_to 'TOP10 Restaurants ', ranking_restaurants_path %>   
+</ul>
+<ul>
+  <%= link_to '達人專頁 ', users_path %>
+</ul>
 
-  <ul>
-  <% @categories.each do |category| %>  |
+<ul>
+  <% @categories.each do |category| %>
+    <span> | </span>
     <%= link_to category_restaurants_path(category) do %>
       <%= category.name %>
     <% end %>
   <% end %>
 </ul>
 
-
-  <% @restaurants.each do |restaurant| %><br>
-        <%= image_tag(restaurant.image, :width => 250) %><br>
-        <h1><%= restaurant.name %></h1>
-        <%= render :partial => 'favorites', :locals => { :restaurant => restaurant } %><br>
-        <%= restaurant.description %><br>
-        <%= link_to 'Show', restaurant_path(restaurant) %><hr>
-  <% end %>
- <%= paginate @restaurants %>
+<% @restaurants.each do |restaurant| %><br>
+  <%= image_tag(restaurant.image, :width => 250) %><br>
+  <h1><%= restaurant.name %></h1>
+  <%= render 'favorites', :restaurant => restaurant %><br>
+  <%= restaurant.description %><br>
+  <%= link_to 'Show', restaurant_path(restaurant) %><hr>
+<% end %>
+<%= paginate @restaurants %>

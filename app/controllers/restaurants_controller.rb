@@ -1,6 +1,6 @@
 class RestaurantsController < ApplicationController
   before_action :authenticate_user!  # 先檢查必須登入
-  before_action :set_restaurant, :except => :index
+  before_action :set_restaurant, :only => [:show, :favorite, :unfavorite]
 
 	def index
   	@restaurants = Restaurant.page(params[:page]).per(10)

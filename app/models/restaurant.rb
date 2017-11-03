@@ -11,12 +11,6 @@ class Restaurant < ApplicationRecord
   has_many :favorited_users, :through => :favorites, :source => :user
 
   def find_my_favorite(user)
-    if user
-      self.favorites.where( :user_id => user.id ).first
-    end
-  end
- 
-  def is_favorited_by(user)
-    find_favorite(user).present?
+    self.favorites.find_by(:user_id => user.id)
   end
 end

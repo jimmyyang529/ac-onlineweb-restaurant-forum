@@ -1,6 +1,8 @@
 <h1>Top 10 人氣餐廳(收藏數最高)</h1>
  
-  <% @restaurants.each do |restaurant| %>
-    <h2><%= restaurant.name %> 餐廳，
-        <%= restaurant.favorites.count %> 個人收藏</h2>
-  <% end %>
+<% @restaurants.each do |restaurant| %>
+  <h2>
+    <%= restaurant.name %> 餐廳，
+    <%= restaurant.favorites.count %> 個人收藏
+  </h2>
+<% end %>

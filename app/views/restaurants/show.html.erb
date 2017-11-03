@@ -1,24 +1,26 @@
 <h1><%= @restaurant.name %> Restaurant </h1>
+
 <%= image_tag(@restaurant.image, :width => 400) %> <br>
 Opening Hour:<%= @restaurant.opening_hours %> <br>
 Tel: <%= @restaurant.tel %><br>
 Address: <%= @restaurant.address %><br>
 Description:<%= @restaurant.description %><br>
  
- <%= link_to 'Back to index', :controller => 'restaurants', :action => 'index' %><br>
+<%= link_to 'Back to index', :controller => 'restaurants', :action => 'index' %><br>
+
 <h3>Restaurant Reviews</h3>
-  <% @restaurant.comments.each do|f| %>
-    <h4><%= f.comment %></h4>
-        <%= f.user.email %><br>
-        <%= time_ago_in_words(f.created_at) %> <br>
-        <% if f.user.email == current_user.email %>
-    <%= link_to 'Edit comment', edit_restaurant_comment_path( @restaurant, f.id ) %><br>
-    <%= link_to 'Destroy comment', restaurant_comment_path( @restaurant, f.id ), method: :delete, data:{ confirm:"Are you sure?"} %><br>
-    <% end %>
+<% @restaurant.comments.each do|comment| %>
+  <h4><%= comment.comment %></h4>
+  <%= comment.user.email %><br>
+  <%= time_ago_in_words(comment.created_at) %> <br>
+  <% if comment.user == current_user %>
+    <%= link_to 'Edit comment', edit_restaurant_comment_path( @restaurant, comment.id ) %><br>
+    <%= link_to 'Destroy comment', restaurant_comment_path( @restaurant, comment.id ), method: :delete, data: { confirm:"Are you sure?" } %><br>
+  <% end %>
 <% end %>
  
 <h3>Add comment</h3>
 <%= form_for([@restaurant, @restaurant.comments.build]) do |f| %>
-    <%= f.text_area :comment %><br>
-    <%= f.submit %>
-  <% end %><br>
+  <%= f.text_area :comment %><br>
+  <%= f.submit %>
+<% end %><br>

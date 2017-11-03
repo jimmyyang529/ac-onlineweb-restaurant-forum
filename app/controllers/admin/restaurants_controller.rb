@@ -38,6 +38,11 @@ class Admin::RestaurantsController < ApplicationController
    end
   end
 
+  def destroy
+    @restaurant.destroy
+    redirect_to admin_restaurants_path
+  end
+
   private
 
   def set_restaurant

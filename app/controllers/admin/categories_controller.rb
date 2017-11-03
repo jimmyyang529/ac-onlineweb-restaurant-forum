@@ -1,7 +1,7 @@
 class Admin::CategoriesController < ApplicationController
   before_action :authenticate_user!  #先檢查是否登入
   before_action :authenticate_admin  #檢查有無管理者權限
-  before_action :set_category, :only => [ :show, :edit, :update, :destroy]
+  before_action :set_category, :only => [:show, :edit, :update, :destroy]
 
   def index
     @categories = Category.all

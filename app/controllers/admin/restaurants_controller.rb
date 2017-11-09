@@ -14,10 +14,11 @@ class Admin::RestaurantsController < ApplicationController
 	def create
   	@restaurant = Restaurant.new(restaurant_params)
     if @restaurant.save
-      redirect_to :action => :index
+      redirect_to admin_restaurants_path
 			flash[:notice] = "restaurant was successfully created"
     else
- 			render :action => :new
+			render :new
+			flash[:notice] = "restaurant was failed to created"
     end
   end
 
@@ -26,29 +27,32 @@ class Admin::RestaurantsController < ApplicationController
 
   def update
    if @restaurant.update(restaurant_params)
-      redirect_to :action => :show, :id => @restaurant
+      redirect_to admin_restaurant_path(@restaurant)
       flash[:notice] = "restaurant was successfully updated"
    else
-      render :action => :edit
+      render :edit
+			flash[:notice] = "restaurant was failed to update"
    end
   end
 
   def show
   end
 
+	def destroy
+		@restaurant.destroy
+		redirect_to admin_restaurants_path
+	end
 
 
   private
 
+	def set_restaurant
+		@restaurant = Restaurant.find(params[:id])
+	end
+
   def restaurant_params
-    params.require(:restaurant).permit(:name,
-    																	:opening_hours,
-    																	:tel,
-    																	:address,
-    																	:description,
-    																	:image,
-                                      :category_id
-    																	)
+    params.require(:restaurant).permit(:name, :opening_hours, :tel, :address,
+    																	:description, :image, :category_id)
   end
 
 

@@ -1,25 +1,40 @@
-  <h1>美食論壇</h1>
+<div class="container">
+  <h1>美食餐廳論壇</h1>
+
   <ul>
-    <%= link_to 'TOP10 Restaurants ', ranking_restaurants_path %> 
-  </ul>
-  <ul>
+    <%= link_to 'TOP10 Restaurants ', ranking_restaurants_path %> |
     <%= link_to '達人專頁 ', users_path %>
+    <% @categories.each do |category| %>  |
+      <%= link_to category_restaurants_path(category) do %>
+        <%= category.name %>
+        <% end %>
+    <% end %>
   </ul>
 
-  <ul>
-  <% @categories.each do |category| %>  |
-    <%= link_to category_restaurants_path(category) do %>
-      <%= category.name %>
-    <% end %>
-  <% end %>
-</ul>
 
 
-  <% @restaurants.each do |restaurant| %><br>
-        <%= image_tag(restaurant.image, :width => 250) %><br>
-        <h1><%= restaurant.name %></h1>
-        <%= render :partial => 'favorites', :locals => { :restaurant => restaurant } %><br>
-        <%= restaurant.description %><br>
-        <%= link_to 'Show', restaurant_path(restaurant) %><hr>
-  <% end %>
- <%= paginate @restaurants %>
+<!-- 列出所有餐廳 -->
+
+<div class="row">
+
+<% @restaurants.each do |restaurant| %>
+
+  <div class="col restaurant-list">
+
+ <%= image_tag(restaurant.image, :width => 350, :height => 240) %>
+    <h1><%= restaurant.name %>
+    <button class="btn btn-info">
+        <%= render :partial => 'favorites', :locals => { :restaurant => restaurant } %></h1></button>
+      <%= restaurant.description %>
+      <%= link_to 'See More...', restaurant_path(restaurant) %>
+</div>
+<% end %>
+
+
+</div>
+
+
+
+<%= paginate @restaurants %>
+
+</div>

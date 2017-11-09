@@ -1,22 +1,24 @@
-<%= f.label :category_id, "Category" %>
-<%= f.select :category_id, Category.all.map{ |x| [x.name, x.id] }, :prompt => "Please Select" %><br>
+<%= form_for restaurant, :url => url do |f| %>
+  <%= f.label :category_id, "Category" %>
+  <%= f.select :category_id, Category.all.map{ |x| [x.name, x.id] }, :prompt => "Please Select" %><br>
 
+  <%= f.label :name, "Name" %>
+  <%= f.text_field :name %>
 
-<%= f.label :name, "Name" %>
-<%= f.text_field :name %> 
- 
-<%= f.label :opening_hours, "Opening Hours" %>
-<%= f.text_field :opening_hours %> 
- 
-<%= f.label :tel, "Tel" %>
-<%= f.text_field :tel %> 
+  <%= f.label :opening_hours, "Opening Hours" %>
+  <%= f.text_field :opening_hours %>
 
-<%= f.label :address, "Address" %>
-<%= f.text_field :address %> 
+  <%= f.label :tel, "Tel" %>
+  <%= f.text_field :tel %>
 
- 
-<%= f.label :description, "Description" %>
-<%= f.text_area :description %>
- 
-<%= f.label :image, "Photo" %>
-<%= f.file_field :image %>
+  <%= f.label :address, "Address" %>
+  <%= f.text_field :address %>
+
+  <%= f.label :description, "Description" %>
+  <%= f.text_area :description %>
+
+  <%= f.label :image, "Photo" %>
+  <%= f.file_field :image %>
+
+  <%= f.submit %>
+<% end %>

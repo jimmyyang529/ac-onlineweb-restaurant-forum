@@ -1,8 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
-
-
   private
 
   def authenticate_admin
@@ -11,19 +9,5 @@ class ApplicationController < ActionController::Base
       redirect_to root_path
     end
   end
-
-  def set_restaurant
-    @restaurant = Restaurant.find(params[:id])
-  end
-
-  def set_category
-    @category = Category.find(params[:id])
-  end
-
-
-  def set_user
-    @user = User.find(params[:id])
-  end
-
 
 end

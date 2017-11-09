@@ -1,2 +1,6 @@
-<%= f.label :name, " Category Name" %>
-<%= f.text_field :name %> 
+<%= form_for category, :url => url do |f| %>
+  <%= f.label :name, " Category Name" %>
+  <%= f.text_field :name %>
+  
+  <%= f.submit %>
+<% end %>

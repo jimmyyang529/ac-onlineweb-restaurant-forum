@@ -1,10 +1,10 @@
 <h1><%= @restaurant.name %> Restaurant </h1>
 <%= image_tag(@restaurant.image, :width => 400) %> <br>
-Opening Hour:<%= @restaurant.opening_hours %> <br>
-Tel: <%= @restaurant.tel %><br>
-Address: <%= @restaurant.address %><br>
-Description:<%= @restaurant.description %><br>
- 
+  Opening Hour:<%= @restaurant.opening_hours %> <br>
+  Tel: <%= @restaurant.tel %><br>
+  Address: <%= @restaurant.address %><br>
+  Description:<%= @restaurant.description %><br>
+
  <%= link_to 'Back to index', :controller => 'restaurants', :action => 'index' %><br>
 <h3>Restaurant Reviews</h3>
   <% @restaurant.comments.each do|f| %>
@@ -16,9 +16,9 @@ Description:<%= @restaurant.description %><br>
     <%= link_to 'Destroy comment', restaurant_comment_path( @restaurant, f.id ), method: :delete, data:{ confirm:"Are you sure?"} %><br>
     <% end %>
 <% end %>
- 
+
 <h3>Add comment</h3>
-<%= form_for([@restaurant, @restaurant.comments.build]) do |f| %>
+  <%= form_for([@restaurant, @restaurant.comments.build]) do |f| %>
     <%= f.text_area :comment %><br>
     <%= f.submit %>
   <% end %><br>
